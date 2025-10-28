@@ -1,0 +1,24 @@
+{
+  "name": "dep-diff",
+  "version": "1.0.0",
+  "description": "Describe the difference in dependencies between two sources",
+  "main": "index.js",
+  "scripts": {
+    "test": "dep-diff-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DylanKoster/dep-diff.git"
+  },
+  "keywords": [
+    "Dependency",
+    "Diff",
+    "Difference"
+  ],
+  "author": "Dylan Koster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DylanKoster/dep-diff/issues"
+  },
+  "homepage": "https://github.com/DylanKoster/dep-diff#readme"
+}
