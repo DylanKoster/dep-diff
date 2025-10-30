@@ -2,10 +2,12 @@
   "name": "dep-diff",
   "version": "1.0.0",
   "description": "Describe the difference in dependencies between two sources",
-  "main": "dep-diff.ts",
+  "main": "dep-diff.js",
+  "bin": "cli.js",
+  "type": "module",
   "scripts": {
     "test": "dep-diff-test",
-    "build": "tsc",
+    "build": "node tools/build.js",
     "format": "prettier --write ."
   },
   "repository": {
@@ -24,7 +26,12 @@
   },
   "homepage": "https://github.com/DylanKoster/dep-diff#readme",
   "devDependencies": {
+    "@types/node": "^24.9.2",
+    "@types/yargs": "^17.0.34",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "yargs": "^18.0.0"
   }
 }
