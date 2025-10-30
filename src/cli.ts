@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { DepDiff } from './dep-diff.js';
+import { DepDiff } from './core.js';
 import { DepDiffSection, optionToEnum } from './sections.js';
 
 import yargs from 'yargs';
