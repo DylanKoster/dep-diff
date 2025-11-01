@@ -5,6 +5,7 @@ import { DepDiffSection, optionToEnum } from './sections.js';
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import { getPackageJson } from './util.js';
 
 const options = await yargs(hideBin(process.argv))
   .demandCommand(2)
@@ -25,6 +26,6 @@ const options = await yargs(hideBin(process.argv))
   .coerce('section', optionToEnum)
   .parse();
 
-console.log(
-  DepDiff.getDifferences(options._[0], options._[1], options.section),
-);
+const jsonOld: any = getPackageJson(options._[0] as string);
+const jsonNew: any = getPackageJson(options._[1] as string);
+console.log(DepDiff.getDifferences(jsonOld, jsonNew, options.section));

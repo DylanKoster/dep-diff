@@ -1,0 +1,28 @@
+{
+  "name": "vectorify",
+  "version": "1.2.8",
+  "description": "A lightweight library for vector math and geometric transformations.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "math",
+    "geometry",
+    "vectors",
+    "typescript",
+    "library"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "eslint": "^9.4.0",
+    "vitest": "^2.0.1"
+  },
+  "author": "Nova Code Labs",
+  "license": "BSD-3-Clause"
+}

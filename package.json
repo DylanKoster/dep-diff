@@ -6,7 +6,7 @@
   "bin": "cli.js",
   "type": "module",
   "scripts": {
-    "test": "dep-diff-test",
+    "test": "jest",
     "build": "node tools/build.js",
     "format": "prettier --write ."
   },
@@ -26,9 +26,12 @@
   },
   "homepage": "https://github.com/DylanKoster/dep-diff#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.9.2",
     "@types/yargs": "^17.0.34",
+    "jest": "^30.2.0",
     "prettier": "^3.6.2",
+    "ts-jest": "^29.4.5",
     "typescript": "^5.9.3"
   },
   "dependencies": {

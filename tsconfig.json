@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "preserveConstEnums": true,
     "strictNullChecks": false,
     "baseUrl": "./",
     "outDir": "./dist/",
@@ -15,10 +16,9 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
-    "importHelpers": true,
+    // "importHelpers": true,
     "target": "esnext",
     "module": "esnext",
     "useDefineForClassFields": false,

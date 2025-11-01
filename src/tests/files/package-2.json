@@ -1,0 +1,28 @@
+{
+  "name": "git-insights",
+  "version": "2.1.4",
+  "description": "A CLI tool for generating visual statistics and insights from git repositories.",
+  "bin": {
+    "git-insights": "./bin/git-insights.js"
+  },
+  "scripts": {
+    "start": "node bin/git-insights.js",
+    "test": "mocha",
+    "lint": "eslint src"
+  },
+  "author": "Luna Metrics <cli@lunametrics.dev>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^12.1.0",
+    "simple-git": "^4.22.0",
+    "ora": "^7.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.3.0",
+    "mocha": "^11.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

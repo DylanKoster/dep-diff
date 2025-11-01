@@ -1,4 +1,4 @@
-export const enum DepDiffSection {
+export enum DepDiffSection {
   deps = 'deps',
   dev = 'dev',
   peer = 'peer',
@@ -21,6 +21,7 @@ const sectionTranslations: Record<DepDiffSection, string[]> = {
  *          of them.
  */
 export function enumToKey(section: DepDiffSection): string[] {
+  if (!section) throw Error('Section may not be null or undefined.');
   return sectionTranslations[section];
 }
 
@@ -32,5 +33,7 @@ export function enumToKey(section: DepDiffSection): string[] {
  * @returns The DepDiffSection value that is associated with the given option.
  */
 export function optionToEnum(option: string): DepDiffSection {
+  if (!(option in DepDiffSection))
+    throw Error(`Value ${option} does not exist on the DepDiffSection enum.`);
   return option as DepDiffSection;
 }
