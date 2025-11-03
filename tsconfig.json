@@ -27,8 +27,10 @@
         "@test/*": ["tests/*"],
     },
     "moduleResolution": "node"
-},
+  },
+  "include": ["src"],
   "exclude": [
+    "tests",
     "dist",
     "node_modules"
   ]

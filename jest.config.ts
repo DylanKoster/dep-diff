@@ -1,6 +1,11 @@
-module.exports = {
+import type { Config } from 'jest';
+
+const config: Config = {
   transform: {
-    '^.+\\.ts?$': ['ts-jest', { tsconfig: 'tsconfig.json', useESM: true }],
+    '^.+\\.ts?$': [
+      'ts-jest',
+      { tsconfig: './tests/tsconfig.json', useESM: true },
+    ],
   },
   testEnvironment: 'node',
   testRegex: '/tests/.*\\.(test|spec)?\\.(ts|tsx)$',
@@ -12,3 +17,5 @@ module.exports = {
     '^@test/(.*)$': '<rootDir>/tests/$1',
   },
 };
+
+export default config;
