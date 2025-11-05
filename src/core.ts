@@ -2,11 +2,11 @@ import { DepDiffSection, DepDiffSectionUtil } from './options/sections.js';
 import { haveSameKeys } from './util.js';
 
 export enum DiffType {
-  added,
-  removed,
-  major,
-  minor,
-  patch,
+  added = 'added',
+  removed = 'removed',
+  major = 'major',
+  minor = 'minor',
+  patch = 'patch',
 }
 
 export type DependencyDifference = {
