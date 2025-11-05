@@ -1,22 +1,29 @@
-import chalk from 'chalk';
-import { DepDiffs, DependencyDifference, DiffType } from './core.js';
+import chalk, { ChalkInstance } from 'chalk';
+import { DepDiffs, DependencyDifference, DiffType } from '../core.js';
 import CliTable3, { Table } from 'cli-table3';
+import { IDepDiffOutputFormat } from './output-format.js';
+import stripAnsi from 'strip-ansi';
 
-export class Print {
-  public static printTable(diff: DepDiffs): void {
-    Object.keys(diff).forEach((section: string) => {
-      const table: Table = Print.fillTable(section, diff[section]);
-
-      if (table) {
-        console.log(table.toString());
-      }
-    });
+export class DepDiffTable implements IDepDiffOutputFormat {
+  constructor(private toFile: boolean) {
+    if (this.toFile) chalk.level = 0;
   }
 
-  private static fillTable(
-    section: string,
-    secDiff: DependencyDifference[],
-  ): Table {
+  public formatDiffs(diffs: DepDiffs): string {
+    let out = '';
+
+    Object.keys(diffs).forEach((section: string) => {
+      const table: Table = this.fillTable(section, diffs[section]);
+
+      if (table) {
+        out += `${table.toString()}\n`;
+      }
+    });
+
+    return this.toFile ? stripAnsi(out) : out;
+  }
+
+  private fillTable(section: string, secDiff: DependencyDifference[]): Table {
     const added: DependencyDifference[] = secDiff.filter(
       (diff: DependencyDifference) => !diff.old,
     );
@@ -85,7 +92,7 @@ export class Print {
         color(dep.old || ''),
         color('→'),
         color(dep.new || ''),
-        color(dep.type || 'changed'),
+        color(dep.type.toString() || 'changed'),
       ]);
     });
 

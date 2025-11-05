@@ -1,4 +1,4 @@
 export * from './util';
-export * from './sections';
+export * from './options/sections';
 export * from './core';
 export * from './cli';
