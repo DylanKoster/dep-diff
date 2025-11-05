@@ -77,6 +77,11 @@ class CLI {
               );
           });
         });
+        break;
+      default:
+        throw Error(
+          `FATAL: Unknown destination option: ${DepDiffDestUtil.toCLI(this.dest) ? this.dest.type : this.dest.file}`,
+        );
     }
   }
 }
