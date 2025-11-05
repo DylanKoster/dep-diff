@@ -15,6 +15,7 @@ export class DepDiffSectionUtil {
     peer: ['peerDependencies'],
     all: ['dependencies', 'devDependencies', 'peerDependencies'],
   };
+
   /**
    * Translate a DepDiffSection value into the name of the relevant section in package.json.
    *
