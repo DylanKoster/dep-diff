@@ -1,4 +1,4 @@
-import { DepDiffSection } from '../../src/sections';
+import { DepDiffSection } from '../../src/options/sections';
 import { DepDiff, DependencyDifference, DiffType } from '../../src/core';
 import { getPackageJson } from '../../src/util';
 

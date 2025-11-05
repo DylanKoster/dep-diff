@@ -4,6 +4,6 @@
     "noEmit": true,
     "types": ["jest", "node"]
   },
-  "include": ["./ut/*.ts", "./ut/*.tsx"],
+  "include": ["./ut/**/*.ts", "./ut/**/*.tsx"],
   "exclude": []
 }
