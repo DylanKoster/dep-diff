@@ -92,7 +92,7 @@ export class DepDiffTable implements IDepDiffOutputFormat {
         color(dep.old || ''),
         color('→'),
         color(dep.new || ''),
-        color(dep.type.toString() || 'changed'),
+        color(dep.type || 'changed'),
       ]);
     });
 
