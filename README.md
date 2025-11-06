@@ -1,3 +1,9 @@
+[![Issues](https://img.shields.io/github/issues/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/issues)
+[![PRs](https://img.shields.io/github/issues-pr/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41
+)]((https://github.com/DylanKoster/dep-diff/pulls))
+[![Contributors](https://img.shields.io/github/contributors/DylanKoster/paashaas?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/graphs/contributors)
+[![Tests](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml/badge.svg?label=Tests)](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml)
+
 <pre align="center" >
 ██████╗ ███████╗██████╗       ██████╗ ██╗███████╗███████╗
 ██╔══██╗██╔════╝██╔══██╗      ██╔══██╗██║██╔════╝██╔════╝
@@ -7,12 +13,17 @@
 ╚═════╝ ╚══════╝╚═╝           ╚═════╝ ╚═╝╚═╝     ╚═╝     
 </pre>
 
+
 <div align="center">
+
+
 <h2>The dependency comparison tool.</h2>
 <strong>dep-diff</strong> is a versatile CLI tool that enables developers to compare NPM package dependencies between local files. Support for git refs and npm packages will be added later. Reports can be generated in table or JSON format.
 
 </div>
-<strong>Benefits:</strong>
+
+<br /><br />
+
 
 - **🔍 Easy Dependency Tracking**: Quickly identify what changed between package.json files without manual comparison
 - **📊 Multiple Output Formats**: Choose between human-readable CLI tables or machine-readable JSON for different use cases
@@ -266,17 +277,24 @@ npm run build
 
 ```
 dep-diff/
-├── src/                 # Source code
-│   ├── cli.ts          # CLI entry point
-│   ├── core.ts         # Core comparison logic
-│   ├── print.ts        # Output formatting
-│   ├── sections.ts     # Section utilities
-│   └── util.ts         # Utility functions
-├── tests/              # Test files
-│   └── ut/            # Unit tests
-├── tools/             # Build tools
-└── build/             # Compiled output
+├── src/                     # Source code
+|   ├── options/             # CLI options classes
+|   ├── output/               # Output formatters
+├── tests/                   # Test files
+│   └── ut/                  # Unit tests
+├── tools/                   # Build tools
+└── build/                   # Compiled output
 ```
+
+---
+
+## Future work
+
+The following features are planned on being released:
+ - GIT ref compatibility: Being able to compare with git references (branch HEADS, releases, tags).
+ - NPM packages: Ability to compare with existing NPM packages (and older versions).
+
+ For implementation, details need to be worked out, join the discussion in the [Issues](https://github.com/DylanKoster/dep-diff/issues)!
 
 ---
 
