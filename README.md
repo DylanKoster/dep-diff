@@ -1,8 +1,3 @@
-[![Issues](https://img.shields.io/github/issues/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/issues)
-[![PRs](https://img.shields.io/github/issues-pr/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41
-)]((https://github.com/DylanKoster/dep-diff/pulls))
-[![Contributors](https://img.shields.io/github/contributors/DylanKoster/paashaas?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/graphs/contributors)
-[![Tests](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml/badge.svg?label=Tests)](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml)
 
 <pre align="center" >
 ██████╗ ███████╗██████╗       ██████╗ ██╗███████╗███████╗
@@ -15,6 +10,12 @@
 
 
 <div align="center">
+
+[![Issues](https://img.shields.io/github/issues/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/issues)
+[![PRs](https://img.shields.io/github/issues-pr/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41
+)]((https://github.com/DylanKoster/dep-diff/pulls))
+[![Contributors](https://img.shields.io/github/contributors/DylanKoster/paashaas?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/graphs/contributors)
+[![Tests](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml/badge.svg?label=Tests)](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml)
 
 
 <h2>The dependency comparison tool.</h2>
