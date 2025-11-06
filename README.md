@@ -67,8 +67,7 @@ npm link
 dep-diff [options] <oldSrc> <newSrc>
 ```
 
-Compare dependencies between two package.json sources. Sources can be:
-- Local file paths to package.json files
+Compare dependencies between two package.json sources. Sources are local file paths to package.json files
 
 ---
 
@@ -255,17 +254,12 @@ npm install
 
 3. Run tests:
 ```bash
-npm test
+npm run test
 ```
 
 4. Build the project:
 ```bash
 npm run build
-```
-
-5. Format code:
-```bash
-npm run format
 ```
 
 ### Project Structure
