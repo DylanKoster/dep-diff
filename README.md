@@ -1,11 +1,11 @@
 
 <pre align="center" >
-██████╗ ███████╗██████╗       ██████╗ ██╗███████╗███████╗
-██╔══██╗██╔════╝██╔══██╗      ██╔══██╗██║██╔════╝██╔════╝
-██║  ██║█████╗  ██████╔╝█████╗██║  ██║██║█████╗  █████╗  
-██║  ██║██╔══╝  ██╔═══╝ ╚════╝██║  ██║██║██╔══╝  ██╔══╝  
-██████╔╝███████╗██║           ██████╔╝██║██║     ██║     
-╚═════╝ ╚══════╝╚═╝           ╚═════╝ ╚═╝╚═╝     ╚═╝     
+███╗   ██╗██████╗ ███╗   ███╗      ██████╗ ███████╗██████╗       ██████╗ ██╗███████╗███████╗
+████╗  ██║██╔══██╗████╗ ████║      ██╔══██╗██╔════╝██╔══██╗      ██╔══██╗██║██╔════╝██╔════╝
+██╔██╗ ██║██████╔╝██╔████╔██║█████╗██║  ██║█████╗  ██████╔╝█████╗██║  ██║██║█████╗  █████╗  
+██║╚██╗██║██╔═══╝ ██║╚██╔╝██║╚════╝██║  ██║██╔══╝  ██╔═══╝ ╚════╝██║  ██║██║██╔══╝  ██╔══╝  
+██║ ╚████║██║     ██║ ╚═╝ ██║      ██████╔╝███████╗██║           ██████╔╝██║██║     ██║     
+╚═╝  ╚═══╝╚═╝     ╚═╝     ╚═╝      ╚═════╝ ╚══════╝╚═╝           ╚═════╝ ╚═╝╚═╝     ╚═╝     
 </pre>
 
 
@@ -235,12 +235,12 @@ For programmatic use, the JSON output provides structured data:
 npm-dep-diff can also be used programmatically in Node.js applications:
 
 ```typescript
-import { DepDiff, DepDiffSection } from 'npm-dep-diff';
+import { NpmDepDiff, DepDiffSection } from 'npm-dep-diff';
 
 const oldPackage = require('./package-old.json');
 const newPackage = require('./package-new.json');
 
-const differences = DepDiff.getDifferences(
+const differences = NpmDepDiff.getDifferences(
   oldPackage,
   newPackage,
   DepDiffSection.all
