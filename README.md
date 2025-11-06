@@ -11,15 +11,15 @@
 
 <div align="center">
 
-[![Issues](https://img.shields.io/github/issues/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/issues)
-[![PRs](https://img.shields.io/github/issues-pr/DylanKoster/dep-diff?style=plastic&labelColor=%23333a41
-)]((https://github.com/DylanKoster/dep-diff/pulls))
-[![Contributors](https://img.shields.io/github/contributors/DylanKoster/paashaas?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/dep-diff/graphs/contributors)
-[![Tests](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml/badge.svg?label=Tests)](https://github.com/DylanKoster/dep-diff/actions/workflows/test.yml)
+[![Issues](https://img.shields.io/github/issues/DylanKoster/npm-dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/npm-dep-diff/issues)
+[![PRs](https://img.shields.io/github/issues-pr/DylanKoster/npm-dep-diff?style=plastic&labelColor=%23333a41
+)]((https://github.com/DylanKoster/npm-dep-diff/pulls))
+[![Contributors](https://img.shields.io/github/contributors/DylanKoster/paashaas?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/npm-dep-diff/graphs/contributors)
+[![Tests](https://github.com/DylanKoster/npm-dep-diff/actions/workflows/test.yml/badge.svg?label=Tests)](https://github.com/DylanKoster/npm-dep-diff/actions/workflows/test.yml)
 
 
 <h2>The dependency comparison tool.</h2>
-<strong>dep-diff</strong> is a versatile CLI tool that enables developers to compare NPM package dependencies between local files. Support for git refs and npm packages will be added later. Reports can be generated in table or JSON format.
+<strong>npm-dep-diff</strong> is a versatile CLI tool that enables developers to compare NPM package dependencies between local files. Support for git refs and npm packages will be added later. Reports can be generated in table or JSON format.
 
 </div>
 
@@ -33,7 +33,7 @@
 - **🎯 Flexible Comparison**: Compare specific dependency sections (production, dev, peer) or all at once
 
 <div align="center">
-<a href="https://github.com/DylanKoster/dep-diff/issues/new?labels=bug&template=bug-report---.md">Report Bug</a> · <a href="https://github.com/DylanKoster/dep-diff/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+<a href="https://github.com/DylanKoster/npm-dep-diff/issues/new?labels=bug&template=bug-report---.md">Report Bug</a> · <a href="https://github.com/DylanKoster/npm-dep-diff/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
 </div>
 
 ---
@@ -56,20 +56,20 @@
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g dep-diff
+npm install -g npm-dep-diff
 ```
 
 ### Local Installation
 
 ```bash
-npm install dep-diff
+npm install npm-dep-diff
 ```
 
 ### Build from Source
 
 ```bash
-git clone https://github.com/DylanKoster/dep-diff.git
-cd dep-diff
+git clone https://github.com/DylanKoster/npm-dep-diff.git
+cd npm-dep-diff
 npm install
 npm run build
 npm link
@@ -80,7 +80,7 @@ npm link
 ## Usage
 
 ```bash
-dep-diff [options] <oldSrc> <newSrc>
+npm-dep-diff [options] <oldSrc> <newSrc>
 ```
 
 Compare dependencies between two package.json sources. Sources are local file paths to package.json files
@@ -124,7 +124,7 @@ Compare dependencies between two package.json sources. Sources are local file pa
 Compare two local package.json files:
 
 ```bash
-dep-diff package-old.json package-new.json
+npm-dep-diff package-old.json package-new.json
 ```
 
 ### Compare Specific Sections
@@ -132,13 +132,13 @@ dep-diff package-old.json package-new.json
 Compare only production dependencies:
 
 ```bash
-dep-diff --section deps old-package.json new-package.json
+npm-dep-diff --section deps old-package.json new-package.json
 ```
 
 Compare development dependencies:
 
 ```bash
-dep-diff -s dev package-v1.json package-v2.json
+npm-dep-diff -s dev package-v1.json package-v2.json
 ```
 
 ### Different Output Formats
@@ -146,13 +146,13 @@ dep-diff -s dev package-v1.json package-v2.json
 Output as JSON:
 
 ```bash
-dep-diff --output json old.json new.json
+npm-dep-diff --output json old.json new.json
 ```
 
 ### Save Output to File
 
 ```bash
-dep-diff --dest file:diff-report.txt old.json new.json
+npm-dep-diff --dest file:diff-report.txt old.json new.json
 ```
 
 ### Compare NPM Packages
@@ -160,7 +160,7 @@ dep-diff --dest file:diff-report.txt old.json new.json
 Compare different versions of a published package:
 
 ```bash
-dep-diff lodash@4.17.0 lodash@4.17.21
+npm-dep-diff lodash@4.17.0 lodash@4.17.21
 ```
 
 ### Advanced Usage
@@ -168,8 +168,8 @@ dep-diff lodash@4.17.0 lodash@4.17.21
 Compare all sections and output to both console and file:
 
 ```bash
-dep-diff --section all --output cli old.json new.json
-dep-diff --section all --output json --dest file:report.json old.json new.json
+npm-dep-diff --section all --output cli old.json new.json
+npm-dep-diff --section all --output json --dest file:report.json old.json new.json
 ```
 
 ---
@@ -232,10 +232,10 @@ For programmatic use, the JSON output provides structured data:
 
 ## API
 
-dep-diff can also be used programmatically in Node.js applications:
+npm-dep-diff can also be used programmatically in Node.js applications:
 
 ```typescript
-import { DepDiff, DepDiffSection } from 'dep-diff';
+import { DepDiff, DepDiffSection } from 'npm-dep-diff';
 
 const oldPackage = require('./package-old.json');
 const newPackage = require('./package-new.json');
@@ -259,8 +259,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/DylanKoster/dep-diff.git
-cd dep-diff
+git clone https://github.com/DylanKoster/npm-dep-diff.git
+cd npm-dep-diff
 ```
 
 2. Install dependencies:
@@ -281,7 +281,7 @@ npm run build
 ### Project Structure
 
 ```
-dep-diff/
+npm-dep-diff/
 ├── src/                     # Source code
 |   ├── options/             # CLI options classes
 |   ├── output/               # Output formatters
@@ -299,7 +299,7 @@ The following features are planned on being released:
  - GIT ref compatibility: Being able to compare with git references (branch HEADS, releases, tags).
  - NPM packages: Ability to compare with existing NPM packages (and older versions).
 
- For implementation, details need to be worked out, join the discussion in the [Issues](https://github.com/DylanKoster/dep-diff/issues)!
+ For implementation, details need to be worked out, join the discussion in the [Issues](https://github.com/DylanKoster/npm-dep-diff/issues)!
 
 ---
 
