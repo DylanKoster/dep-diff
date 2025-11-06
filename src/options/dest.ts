@@ -1,5 +1,3 @@
-import { DepDiff } from '@src/core';
-
 export enum DepDiffDestType {
   stdout = 'stdout',
   stderr = 'stderr',

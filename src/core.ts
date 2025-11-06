@@ -18,7 +18,7 @@ export type DependencyDifference = {
 
 export type DepDiffs = Record<string, DependencyDifference[]>;
 
-export class DepDiff {
+export class NpmDepDiff {
   /**
    * Retrieve all differences between the relevant sections of JSON representations of two package.json files.
    *
@@ -34,17 +34,17 @@ export class DepDiff {
     newJson: object,
     sections: DepDiffSection,
   ): Record<string, DependencyDifference[]> {
-    const jsonOldSections: any = DepDiff.getRelevantSections(
+    const jsonOldSections: any = NpmDepDiff.getRelevantSections(
       oldJson,
       DepDiffSectionUtil.enumToKey(sections),
     );
 
-    const jsonNewSections: any = DepDiff.getRelevantSections(
+    const jsonNewSections: any = NpmDepDiff.getRelevantSections(
       newJson,
       DepDiffSectionUtil.enumToKey(sections),
     );
 
-    return DepDiff.compareObjects(jsonOldSections, jsonNewSections);
+    return NpmDepDiff.compareObjects(jsonOldSections, jsonNewSections);
   }
 
   /**
@@ -66,7 +66,7 @@ export class DepDiff {
     let diffs: Record<string, DependencyDifference[]> = {};
 
     for (const section of Object.keys(oldObj)) {
-      diffs[section] = DepDiff.compareSections(
+      diffs[section] = NpmDepDiff.compareSections(
         oldObj[section],
         newObj[section],
       );
@@ -95,14 +95,18 @@ export class DepDiff {
     // Add new packages to diff
     for (const newKey of newKeys) {
       if (!oldKeys.has(newKey)) {
-        diffs.push(DepDiff.createDifference(newKey, undefined, newObj[newKey]));
+        diffs.push(
+          NpmDepDiff.createDifference(newKey, undefined, newObj[newKey]),
+        );
       }
     }
 
     // Add removed packages to diff
     for (const oldKey of oldKeys) {
       if (!newKeys.has(oldKey)) {
-        diffs.push(DepDiff.createDifference(oldKey, oldObj[oldKey], undefined));
+        diffs.push(
+          NpmDepDiff.createDifference(oldKey, oldObj[oldKey], undefined),
+        );
       }
     }
 
@@ -113,7 +117,7 @@ export class DepDiff {
         oldObj[changedKey] !== newObj[changedKey]
       ) {
         diffs.push(
-          DepDiff.createDifference(
+          NpmDepDiff.createDifference(
             changedKey,
             oldObj[changedKey],
             newObj[changedKey],
@@ -150,7 +154,7 @@ export class DepDiff {
     oldValue?: string,
     newValue?: string,
   ) {
-    const type: DiffType | null = DepDiff.getDiffType(oldValue, newValue);
+    const type: DiffType | null = NpmDepDiff.getDiffType(oldValue, newValue);
     return {
       package: key,
       old: oldValue,
@@ -167,8 +171,8 @@ export class DepDiff {
     if (!oldValue) return DiffType.added;
     if (!newValue) return DiffType.removed;
 
-    const oldParts = DepDiff.splitVersion(oldValue);
-    const newParts = DepDiff.splitVersion(newValue);
+    const oldParts = NpmDepDiff.splitVersion(oldValue);
+    const newParts = NpmDepDiff.splitVersion(newValue);
 
     if (!oldParts || !newParts) return null; // invalid version format
 
@@ -190,7 +194,7 @@ export class DepDiff {
    * @returns
    */
   private static splitVersion(version: string): number[] | null {
-    const numPrefixChars: number = DepDiff.getPrefixSize(version);
+    const numPrefixChars: number = NpmDepDiff.getPrefixSize(version);
     version = version.slice(numPrefixChars);
     const parts = version.split('.');
 

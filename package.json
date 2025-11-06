@@ -1,8 +1,8 @@
 {
-  "name": "dep-diff",
+  "name": "npm-dep-diff",
   "version": "1.0.0",
   "description": "Describe the difference in dependencies between two sources",
-  "main": "dep-diff.js",
+  "main": "npm-dep-diff.js",
   "bin": "cli.js",
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DylanKoster/dep-diff.git"
+    "url": "git+https://github.com/DylanKoster/npm-dep-diff.git"
   },
   "keywords": [
     "Dependency",
@@ -22,9 +22,9 @@
   "author": "Dylan Koster",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DylanKoster/dep-diff/issues"
+    "url": "https://github.com/DylanKoster/npm-dep-diff/issues"
   },
-  "homepage": "https://github.com/DylanKoster/dep-diff#readme",
+  "homepage": "https://github.com/DylanKoster/npm-dep-diff#readme",
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.9.2",
