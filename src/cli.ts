@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { DepDiff, DepDiffs } from './core.js';
+import { NpmDepDiff, DepDiffs } from './core.js';
 import { DepDiffSection, DepDiffSectionUtil } from './options/sections.js';
 import { getPackageJson } from './util.js';
 
@@ -30,7 +30,7 @@ class CLI {
   public start() {
     const jsonOld: any = getPackageJson(this.src1);
     const jsonNew: any = getPackageJson(this.src2);
-    const diffs: DepDiffs = DepDiff.getDifferences(
+    const diffs: DepDiffs = NpmDepDiff.getDifferences(
       jsonOld,
       jsonNew,
       this.section,

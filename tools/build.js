@@ -77,7 +77,7 @@ function runBuildPipeline() {
   const start = Date.now();
 
   // Start build
-  write(styled('bold', 'Building dep-diff'));
+  write(styled('bold', 'Building npm-dep-diff'));
   sep('major');
 
   const outDir = getOutDir();

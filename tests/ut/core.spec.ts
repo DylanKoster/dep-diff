@@ -1,5 +1,5 @@
 import { DepDiffSection } from '../../src/options/sections';
-import { DepDiff, DependencyDifference, DiffType } from '../../src/core';
+import { NpmDepDiff, DependencyDifference, DiffType } from '../../src/core';
 import { getPackageJson } from '../../src/util';
 
 describe('test getRelevantSections function', () => {
@@ -23,32 +23,32 @@ describe('test getRelevantSections function', () => {
 
   it('should return empty objects on empty json input', () => {
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections({}, ['a'])).toEqual({ a: {} });
+    expect(NpmDepDiff.getRelevantSections({}, ['a'])).toEqual({ a: {} });
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections({}, ['a', 'b'])).toEqual({
+    expect(NpmDepDiff.getRelevantSections({}, ['a', 'b'])).toEqual({
       a: {},
       b: {},
     });
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections({}, [])).toEqual({});
+    expect(NpmDepDiff.getRelevantSections({}, [])).toEqual({});
   });
 
   it('should return empty object on empty sections input', () => {
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections(json, [])).toEqual({});
+    expect(NpmDepDiff.getRelevantSections(json, [])).toEqual({});
 
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections(json, null)).toEqual({});
+    expect(NpmDepDiff.getRelevantSections(json, null)).toEqual({});
 
     // @ts-expect-error
-    expect(DepDiff.getRelevantSections(json, undefined)).toEqual({});
+    expect(NpmDepDiff.getRelevantSections(json, undefined)).toEqual({});
   });
 
   it('should retrieve correct sections on valid input', () => {
     let sections: object;
 
     // @ts-expect-error
-    sections = DepDiff.getRelevantSections(json, ['a']);
+    sections = NpmDepDiff.getRelevantSections(json, ['a']);
     expect(sections).toEqual({
       a: {
         a_a: 1,
@@ -57,7 +57,7 @@ describe('test getRelevantSections function', () => {
     });
 
     // @ts-expect-error
-    sections = DepDiff.getRelevantSections(json, ['b', 'c']);
+    sections = NpmDepDiff.getRelevantSections(json, ['b', 'c']);
     expect(sections).toEqual({
       b: {
         b_a: 1,
@@ -73,7 +73,7 @@ describe('test getRelevantSections function', () => {
     });
 
     // @ts-expect-error
-    sections = DepDiff.getRelevantSections(json, ['a', 'c']);
+    sections = NpmDepDiff.getRelevantSections(json, ['a', 'c']);
     expect(sections).toEqual({
       a: {
         a_a: 1,
@@ -91,15 +91,15 @@ describe('test getRelevantSections function', () => {
 describe('test compareSections function', () => {
   it('should return empty array on empty inputs', () => {
     // @ts-expect-error
-    expect(DepDiff.compareSections({}, {})).toEqual([]);
+    expect(NpmDepDiff.compareSections({}, {})).toEqual([]);
     // @ts-expect-error
-    expect(DepDiff.compareSections(null, {})).toEqual([]);
+    expect(NpmDepDiff.compareSections(null, {})).toEqual([]);
     // @ts-expect-error
-    expect(DepDiff.compareSections({}, undefined)).toEqual([]);
+    expect(NpmDepDiff.compareSections({}, undefined)).toEqual([]);
     // @ts-expect-error
-    expect(DepDiff.compareSections(null, null)).toEqual([]);
+    expect(NpmDepDiff.compareSections(null, null)).toEqual([]);
     // @ts-expect-error
-    expect(DepDiff.compareSections(undefined, undefined)).toEqual([]);
+    expect(NpmDepDiff.compareSections(undefined, undefined)).toEqual([]);
   });
 
   it('should return only new or old objects on one empty input', () => {
@@ -137,7 +137,7 @@ describe('test compareSections function', () => {
       },
     ];
     // @ts-expect-error
-    expect(DepDiff.compareSections({}, other)).toEqual(diff_1);
+    expect(NpmDepDiff.compareSections({}, other)).toEqual(diff_1);
 
     const diff_2: DependencyDifference[] = [
       {
@@ -166,7 +166,7 @@ describe('test compareSections function', () => {
       },
     ];
     // @ts-expect-error
-    expect(DepDiff.compareSections(other, {})).toEqual(diff_2);
+    expect(NpmDepDiff.compareSections(other, {})).toEqual(diff_2);
   });
 
   it('should return correct differences', () => {
@@ -209,7 +209,7 @@ describe('test compareSections function', () => {
       },
     ];
     // @ts-expect-error
-    expect(DepDiff.compareSections(obj1, obj2)).toEqual(diff_1);
+    expect(NpmDepDiff.compareSections(obj1, obj2)).toEqual(diff_1);
 
     const diff_2: DependencyDifference[] = [
       {
@@ -238,7 +238,7 @@ describe('test compareSections function', () => {
       },
     ];
     // @ts-expect-error
-    expect(DepDiff.compareSections(obj2, obj1)).toEqual(diff_2);
+    expect(NpmDepDiff.compareSections(obj2, obj1)).toEqual(diff_2);
   });
 });
 
@@ -258,17 +258,17 @@ describe('test compareObjects function', () => {
   it('should throw an error if keys differ', () => {
     expect(() => {
       // @ts-expect-error
-      DepDiff.compareObjects({ key1: 1, key2: 2 }, { key2: 1, key1: 2 });
+      NpmDepDiff.compareObjects({ key1: 1, key2: 2 }, { key2: 1, key1: 2 });
     }).toThrow(Error);
 
     expect(() => {
       // @ts-expect-error
-      DepDiff.compareObjects({}, { key1: 2 });
+      NpmDepDiff.compareObjects({}, { key1: 2 });
     }).toThrow(Error);
 
     expect(() => {
       // @ts-expect-error
-      DepDiff.compareObjects({ key1: 2 }, {});
+      NpmDepDiff.compareObjects({ key1: 2 }, {});
     }).toThrow(Error);
   });
 
@@ -323,10 +323,10 @@ describe('test compareObjects function', () => {
         },
       ],
     };
-    // @ts-expect-error
-    expect(DepDiff.compareObjects(obj1, { a: {}, b: {}, c: {} })).toStrictEqual(
-      expec_diff1,
-    );
+    expect(
+      // @ts-expect-error
+      NpmDepDiff.compareObjects(obj1, { a: {}, b: {}, c: {} }),
+    ).toStrictEqual(expec_diff1);
 
     const expec_diff2: Record<string, DependencyDifference[]> = {
       a: [
@@ -378,10 +378,10 @@ describe('test compareObjects function', () => {
         },
       ],
     };
-    // @ts-expect-error
-    expect(DepDiff.compareObjects({ a: {}, b: {}, c: {} }, obj2)).toStrictEqual(
-      expec_diff2,
-    );
+    expect(
+      // @ts-expect-error
+      NpmDepDiff.compareObjects({ a: {}, b: {}, c: {} }, obj2),
+    ).toStrictEqual(expec_diff2);
   });
 
   it('should return the correct differences on both valid inputs', () => {
@@ -421,31 +421,33 @@ describe('test compareObjects function', () => {
       ],
     };
     // @ts-expect-error
-    expect(DepDiff.compareObjects(obj1, obj2)).toStrictEqual(expec_diff3);
+    expect(NpmDepDiff.compareObjects(obj1, obj2)).toStrictEqual(expec_diff3);
   });
 });
 
 describe('test getDifferences function', () => {
   it('should throw error on empty inputs', () => {
     expect(() => {
-      DepDiff.getDifferences(null, null, null);
+      NpmDepDiff.getDifferences(null, null, null);
     }).toThrow(Error);
 
     expect(() => {
-      DepDiff.getDifferences(undefined, {}, DepDiffSection.dev);
+      NpmDepDiff.getDifferences(undefined, {}, DepDiffSection.dev);
     }).toThrow(Error);
 
     expect(() => {
-      DepDiff.getDifferences(undefined, undefined, DepDiffSection.peer);
+      NpmDepDiff.getDifferences(undefined, undefined, DepDiffSection.peer);
     }).toThrow(Error);
   });
 
   it('should return empty differences on empty inputs', () => {
-    expect(DepDiff.getDifferences({}, {}, DepDiffSection.all)).toStrictEqual({
-      dependencies: [],
-      devDependencies: [],
-      peerDependencies: [],
-    });
+    expect(NpmDepDiff.getDifferences({}, {}, DepDiffSection.all)).toStrictEqual(
+      {
+        dependencies: [],
+        devDependencies: [],
+        peerDependencies: [],
+      },
+    );
   });
 
   it('should only contain old differences on second input empty', () => {
@@ -512,9 +514,9 @@ describe('test getDifferences function', () => {
       peerDependencies: [],
     };
 
-    expect(DepDiff.getDifferences(pckg4, {}, DepDiffSection.all)).toStrictEqual(
-      diff1,
-    );
+    expect(
+      NpmDepDiff.getDifferences(pckg4, {}, DepDiffSection.all),
+    ).toStrictEqual(diff1);
 
     const diff2: Record<string, DependencyDifference[]> = {
       dependencies: [
@@ -558,7 +560,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg4, {}, DepDiffSection.deps),
+      NpmDepDiff.getDifferences(pckg4, {}, DepDiffSection.deps),
     ).toStrictEqual(diff2);
   });
 
@@ -656,9 +658,9 @@ describe('test getDifferences function', () => {
       peerDependencies: [],
     };
 
-    expect(DepDiff.getDifferences({}, pckg1, DepDiffSection.all)).toStrictEqual(
-      diff1,
-    );
+    expect(
+      NpmDepDiff.getDifferences({}, pckg1, DepDiffSection.all),
+    ).toStrictEqual(diff1);
 
     const diff2: Record<string, DependencyDifference[]> = {
       devDependencies: [
@@ -713,9 +715,9 @@ describe('test getDifferences function', () => {
       ],
     };
 
-    expect(DepDiff.getDifferences({}, pckg1, DepDiffSection.dev)).toStrictEqual(
-      diff2,
-    );
+    expect(
+      NpmDepDiff.getDifferences({}, pckg1, DepDiffSection.dev),
+    ).toStrictEqual(diff2);
   });
 
   it('should contain correct differences on package-3.json and package-6.json and all dependencies', () => {
@@ -797,7 +799,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg3, pckg6, DepDiffSection.all),
+      NpmDepDiff.getDifferences(pckg3, pckg6, DepDiffSection.all),
     ).toStrictEqual(diff1);
   });
 
@@ -858,7 +860,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg6, pckg3, DepDiffSection.deps),
+      NpmDepDiff.getDifferences(pckg6, pckg3, DepDiffSection.deps),
     ).toStrictEqual(diff1);
   });
 
@@ -895,7 +897,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg2, pckg5, DepDiffSection.dev),
+      NpmDepDiff.getDifferences(pckg2, pckg5, DepDiffSection.dev),
     ).toStrictEqual(diff1);
   });
 
@@ -932,7 +934,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg2, pckg5, DepDiffSection.dev),
+      NpmDepDiff.getDifferences(pckg2, pckg5, DepDiffSection.dev),
     ).toStrictEqual(diff1);
   });
 
@@ -963,7 +965,7 @@ describe('test getDifferences function', () => {
     };
 
     expect(
-      DepDiff.getDifferences(pckg8, pckg7, DepDiffSection.peer),
+      NpmDepDiff.getDifferences(pckg8, pckg7, DepDiffSection.peer),
     ).toStrictEqual(diff1);
   });
 });
