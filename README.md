@@ -11,6 +11,7 @@
 
 <div align="center">
 
+[![Version](https://img.shields.io/npm/v/npm-dep-diff?style=plastic)](https://www.npmjs.com/package/npm-dep-diff)
 [![Issues](https://img.shields.io/github/issues/DylanKoster/npm-dep-diff?style=plastic&labelColor=%23333a41)](https://github.com/DylanKoster/npm-dep-diff/issues)
 [![PRs](https://img.shields.io/github/issues-pr/DylanKoster/npm-dep-diff?style=plastic&labelColor=%23333a41
 )](https://github.com/DylanKoster/npm-dep-diff/pulls)
