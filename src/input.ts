@@ -144,16 +144,24 @@ function getPackageFromNpm(input: InputSource): Promise<object> {
   if (input.type !== InputType.NPM)
     throw Error(`Wrong type, expected NPM, got ${input.type}.`);
 
-  const splits = input.source.split('@');
-  const version = splits.pop();
-  // If, somehow, the name contains an @, re-add it.
-  const name = splits.join('@');
+  let src = input.source;
+
+  const regex: RegExp = /.+@\d+.?\d*.?\d*/;
+  let name: string;
+  let version: string;
+  if (!regex.test(src)) {
+    name = src;
+    version = 'latest';
+  } else {
+    const splits: string[] = src.split('@');
+    version = splits.pop();
+    // If, somehow, the name contains an @, re-add it.
+    name = splits.join('@');
+  }
 
   return fetch(`https://registry.npmjs.org/${name}`)
     .catch((err) => {
-      throw Error(
-        `Error thrown while gathering manifest for ${input.source}: ${err}`,
-      );
+      throw Error(`Error thrown while gathering manifest for ${src}: ${err}`);
     })
     .then((resp: Response) => {
       if (resp.status < 200 || resp.status >= 300)
@@ -164,6 +172,12 @@ function getPackageFromNpm(input: InputSource): Promise<object> {
       return resp.json();
     })
     .then((json: object) => {
-      return json['versions'][version];
+      if (version !== 'latest') return [json['versions'], version];
+
+      const keys: string[] = Object.keys(json['versions']);
+      return [json['versions'], keys[keys.length - 1]];
+    })
+    .then(([versions, version]: [object, string]) => {
+      return versions[version];
     });
 }
