@@ -2,7 +2,6 @@
 
 import { NpmDepDiff, DepDiffs } from './core.js';
 import { DepDiffSection, DepDiffSectionUtil } from './options/sections.js';
-import { getPackageJson } from './util.js';
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
@@ -17,6 +16,8 @@ import {
 import { access, constants, writeFile } from 'node:fs';
 import { stderr, stdout } from 'process';
 import { DepDiffTable } from './output/table.js';
+import { getPackageFromInput, InputSource, parseSource } from './input.js';
+import { json } from 'node:stream/consumers';
 
 class CLI {
   constructor(
@@ -28,17 +29,28 @@ class CLI {
   ) {}
 
   public start() {
-    const jsonOld: any = getPackageJson(this.src1);
-    const jsonNew: any = getPackageJson(this.src2);
-    const diffs: DepDiffs = NpmDepDiff.getDifferences(
-      jsonOld,
-      jsonNew,
-      this.section,
-    );
+    const oldSource: InputSource = parseSource(this.src1);
+    const newSource: InputSource = parseSource(this.src2);
+    const jsonOld: Promise<object> = getPackageFromInput(oldSource);
+    const jsonNew: Promise<object> = getPackageFromInput(newSource);
 
-    const output: string = this.formatDiffs(diffs);
+    Promise.all([jsonOld, jsonNew])
+      .catch((err) => {
+        throw Error(
+          `Encountered error when trying to get package from input: ${err}`,
+        );
+      })
+      .then(([pkgOld, pkgNew]: [object, object]) => {
+        const diffs: DepDiffs = NpmDepDiff.getDifferences(
+          pkgOld,
+          pkgNew,
+          this.section,
+        );
 
-    this.printDiffs(output);
+        const output: string = this.formatDiffs(diffs);
+
+        this.printDiffs(output);
+      });
   }
 
   private formatDiffs(diffs: DepDiffs): string {
