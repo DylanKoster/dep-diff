@@ -27,7 +27,7 @@
 
 
 <h2>The dependency comparison tool.</h2>
-<strong>npm-dep-diff</strong> is a versatile CLI tool that enables developers to compare NPM package dependencies between local files. Support for git refs and npm packages will be added later. Reports can be generated in table or JSON format.
+<strong>npm-dep-diff</strong> is a versatile CLI tool that enables developers to compare NPM package dependencies between local files, git references, and npm packages. Reports can be generated in table or JSON format.
 
 </div>
 
@@ -94,6 +94,23 @@ npm-dep-diff [options] <oldSrc> <newSrc>
 Compare dependencies between two package.json sources. Sources are local file paths to package.json files
 
 ---
+
+## Arguments
+
+_oldSrc_ and _newSrc_ are the positional arguments for _npm-dep-diff_. These represent the old and new npm source to be compared, respectively. These can have four types:
+ 1. A JSON file, in the NPM package.json style.
+ 1. A directory, should be the root directory of a NPM package, containing a file called package.json that follows the package.json format.
+ 1. A git reference, can be a branch, commit, tag, or release, that contains the code for a NPM package.
+ 1. A NPM package that is published on the npm registery. The version can be added with the common _@_ as a separator: _\<name\>@\<version\>_
+
+To specify the type, _npm-dep-diff_ requires the type to be prepended to the actual source path.
+ - For files or directories, use the _file:_ prefix, e.g.: _file:./package.json_ or _file:./npm/_
+ - For git references, use the _git:_ prefix, e.g.: _git:HEAD_
+ - For NPM packages, use the _npm:_ prefix, e.g.: _npm:axios@latest_
+
+If no prefix is provided, _npm-dep-diff_ will assume the source is a file.
+
+_Note:_ In the future, _npm-dep-diff_ will allow no prefix to be provided, and will try to infer the type by using the source context.
 
 ## Options
 
